@@ -1,35 +1,54 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState, useEffect } from 'react'
+/* Har noen problemer med å hente filene, den funker med å bytte liten 
+ bokstav på components eller til stor hvis den er liten fra før, funker selvom det er error her*/
+import BookList from './components/BookList'
+import SearchBar from './components/SearchBar'
+import'./style/main.css'
+import SearchResults from './components/SearchResults'
 
-function App() {
-  const [count, setCount] = useState(0)
 
+function BookSearch() {
+
+  const [books, setBooks] = useState([])
+
+  const [searchTerm, setSearchTerm] = useState("James+bond")
+
+
+
+  useEffect(() => {
+    const fetchBooks = async () => {
+      try {
+        // Sørg for at searchTerm er minst tre tegn før du utfører søket
+        if (searchTerm.length >= 3) {
+          const response = await fetch(`https://openlibrary.org/search.json?q=${searchTerm}&limit=10`)
+          const data = await response.json()
+          setBooks(data.docs);
+        } else {
+          // Hvis searchTerm er mindre enn tre tegn, så tømmes resultatene
+          setBooks([])
+        }
+      } catch (error) {
+        console.error("Det har skjedd en feil", error)
+        setBooks([])
+      }
+    }
+
+    fetchBooks()
+  }, [searchTerm])
   return (
+
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+    <SearchResults books={books} />
+
+   
+
     </>
+
   )
+
 }
 
-export default App
+export default BookSearch
+
+// https://covers.openlibrary.org/b/isbn/0385472579-S.jpg Her er bilde for bøkene.

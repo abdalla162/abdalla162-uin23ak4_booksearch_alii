@@ -18,7 +18,7 @@ function BookSearch() {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        // Sørg for at searchTerm er minst tre tegn før du utfører søket
+        // SearchTerm er minst tre tegn før søket utføres
         if (searchTerm.length >= 3) {
           const response = await fetch(`https://openlibrary.org/search.json?q=${searchTerm}&limit=10`)
           const data = await response.json()

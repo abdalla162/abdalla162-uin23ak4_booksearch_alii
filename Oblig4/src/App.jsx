@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
-/* Har noen problemer med å hente filene, den funker med å bytte liten 
- bokstav på components eller til stor hvis den er liten fra før, funker selvom det er error her*/
-import BookList from './components/BookList'
-import SearchBar from './components/SearchBar'
-import'./style/main.css'
-import SearchResults from './components/SearchResults'
+
+import BookList from "./Components/BookList.jsx";
+import SearchBar from "./Components/SearchBar.jsx";
+import SearchResults from "./Components/SearchResults.jsx";
+import "./style/main.css";
+
 
 
 function BookSearch() {

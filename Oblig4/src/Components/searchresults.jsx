@@ -1,5 +1,5 @@
 import React from 'react'
-import Bookcard from './Bookcard'
+import Bookcard from './BookCard'
 
 
 

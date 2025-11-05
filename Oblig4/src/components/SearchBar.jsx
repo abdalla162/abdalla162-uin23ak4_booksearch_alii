@@ -12,14 +12,14 @@ export default function SearchBar({ setSearchTerm }) {
 
     e.preventDefault();
 
-    setSearchTerm(search.replace(/\s/g, '+'))
+    setSearchTerm(search)  
 
   }
   return (
 
     <div>
 
-      <form onSubmit={handleSubmit}>
+      <form className="search-row" onSubmit={handleSubmit}>
 
         <input
 

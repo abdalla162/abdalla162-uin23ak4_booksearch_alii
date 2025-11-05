@@ -11,7 +11,8 @@ export default function Bookcard({ title, first_publish_year, author_name, cover
 
         <p>Forfatter: {author_name}</p>
 
-        <p>Rating: {ratings_average}</p>
+        <p>Rating: {ratings_average != null ? Number(ratings_average).toFixed(1) : "Ikke tilgjengelig"}</p>
+
         
         {isbn == null ? "" : <a href={`https://www.amazon.com/s?k=${isbn?.[0]}`}>Show in Amazon</a>}
 

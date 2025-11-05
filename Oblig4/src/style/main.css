@@ -15,4 +15,142 @@
   }
   
  
-   
+   /* Page layout */
+.page {
+  min-height: 100vh;
+  background: #2f2f2f;            /* behold mørk bakgrunn */
+  padding: 2rem 1rem;
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 980px;                /* gjør innholdet smalere */
+  margin: 0 auto;                  /* sentrer horisontalt */
+}
+
+/* Search bar over kortene */
+.container form {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;          /* avstand over kortene */
+}
+
+.container input[type="text"] {
+  flex: 1;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid #555;
+  border-radius: 8px;
+  background: #3a3a3a;
+  color: #f0f0f0;
+  outline: none;
+}
+
+.container button[type="submit"] {
+  padding: 0.6rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: #3f3f3f;
+  color: #f7f7f7;
+  cursor: pointer;
+}
+
+/* Grid med bokser i midten */
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 1rem;
+}
+
+/* Selve boksen/kortet */
+.book-card {
+  background: #2a2a2a;
+  border: 1px solid #4b4b4b;
+  border-radius: 12px;
+  padding: 1rem;
+  color: #f3f3f3;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+
+.book-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+  margin: 0.25rem 0 0.75rem;
+}
+
+.book-card h3 {
+  margin: 0 0 0.5rem;
+}
+
+/* neutralize Vite template's flex body so we control layout */
+body { display: block !important; }
+
+/* page wrapper */
+.page {
+  min-height: 100vh;
+  background: #242424; /* keep your dark theme */
+  padding: 2rem 1rem;
+  box-sizing: border-box;
+}
+
+/* centered column */
+.container {
+  width: min(100%, 1200px);
+  margin: 0 auto;            /* centers content */
+}
+
+/* search bar centered above grid */
+.search-row {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;   /* center input + button */
+  margin-bottom: 1.25rem;
+}
+
+.search-row input[type="text"] {
+  flex: 1;
+  max-width: 560px;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid #555;
+  border-radius: 8px;
+  background: #3a3a3a;
+  color: #f0f0f0;
+  outline: none;
+}
+
+.search-row button[type="submit"] {
+  padding: 0.6rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: #3f3f3f;
+  color: #f7f7f7;
+  cursor: pointer;
+}
+
+/* centered responsive grid of boxes */
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+/* card styling (you already have .book-card in BookCard.jsx) */
+.book-card {
+  width: 100%;
+  box-sizing: border-box;
+}
+.book-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+@media (min-width: 640px) {   /* ~mobil -> liten tablet */
+  .results-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 960px) {   /* ~tablet -> laptop */
+  .results-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (min-width: 1280px) {  /* bred skjerm */
+  .results-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
